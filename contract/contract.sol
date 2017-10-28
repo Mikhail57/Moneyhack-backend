@@ -44,7 +44,7 @@ contract InfoContainer is BaseContract {
 
 	mapping (address => mapping (string => string)) values;
 
-	function getData(address whom, string sensorName) public returns(string) {
+	function getData(address whom, string sensorName) constant public returns(string) {
 		require((whom == owner) || (allowance[owner][whom]));
 		return values[whom][sensorName];
 	}

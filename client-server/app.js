@@ -13,7 +13,7 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
 }));
 
 const { eth } = web3;
-web3.setProvider(new web3.providers.HttpProvider("http://localhost:8545"));
+web3.setProvider(new web3.providers.HttpProvider("http://185.125.219.98:8545"));
 
 const infoContract = eth.contract(contract.ABI).at(contract.address);
 
@@ -43,7 +43,7 @@ app.post("/set", function (req, res) {
 
 
 	for (var i in array) {
-		var t = infoContract.getData.sendTransaction(id, i);
+		var t = infoContract.getData.call(id, i);
 		console.log(t);
 		array[i] = t + array[i];
 		console.log(array[i]);
