@@ -23,7 +23,7 @@ contract BaseContract is Owned {
 		
 	}
 
-	function approve(address viewer) returns(bool res) {
+	function approve(address viewer) public returns(bool res) {
 		allowance[msg.sender][viewer] = true;
 		return true;
 	}
@@ -44,12 +44,12 @@ contract InfoContainer is BaseContract {
 
 	mapping (address => mapping (string => string)) values;
 
-	function getData(address whom, string sensorName) constant returns(string) {
+	function getData(address whom, string sensorName) public constant returns(string) {
 		require((whom == owner) || (allowance[owner][whom]));
 		return values[whom][sensorName];
 	}
 
-	function replaceData(address to, string name, string data) only_owner {
+	function replaceData(address to, string name, string data) public only_owner {
 		require(to == owner);
 		values[to][name] = data;
 	}
