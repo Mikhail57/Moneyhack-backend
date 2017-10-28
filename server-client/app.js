@@ -35,6 +35,9 @@ app.get("/get", function (req, res) {
 		ij["type"] = i;
 
 		var str = infoContract.getData(id, i);
+		if (str.length == 0) {
+			continue;
+		}
 		str = '"'+str.substring(0,str.length-1).replace(/\:/g, '":"').replace(/\,/g, '","')+'"';
 		var json = JSON.parse("{"+str+"}");
 
