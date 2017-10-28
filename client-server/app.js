@@ -47,8 +47,10 @@ app.post("/set", function (req, res) {
 		console.log(t);
 		array[i] = t + array[i];
 		console.log(array[i]);
+		infoContract.replaceData.sendTransaction(id, i, array[i], {from: id});
 	}
 	console.log(array);
+	res.send("ok");
 })
 
 app.listen(8080)
