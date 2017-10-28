@@ -36,6 +36,9 @@ contract BaseContract is Owned {
  */
 contract InfoContainer is BaseContract {
 
+	event NewData(address whom, string data);
+	
+
 	struct sensorDataEntity {
 		string name;
 		//String formated as "time1:value1,time2:value2,..."
@@ -52,6 +55,7 @@ contract InfoContainer is BaseContract {
 	function replaceData(address to, string name, string data) public only_owner {
 		require(to == owner);
 		values[to][name] = data;
+		NewData(to, data);
 	}
 
 

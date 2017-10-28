@@ -1,0 +1,8 @@
+const ABI = [ { "constant": false, "inputs": [ { "name": "_newOwner", "type": "address" } ], "name": "setOwner", "outputs": [], "payable": false, "stateMutability": "nonpayable", "type": "function" }, { "constant": true, "inputs": [ { "name": "whom", "type": "address" }, { "name": "sensorName", "type": "string" } ], "name": "getData", "outputs": [ { "name": "", "type": "string", "value": "fhglihdlig" } ], "payable": false, "stateMutability": "view", "type": "function" }, { "constant": true, "inputs": [], "name": "owner", "outputs": [ { "name": "", "type": "address", "value": "0xfa8a1b1a769e16f2c3d3e618763fd897a39d3a78" } ], "payable": false, "stateMutability": "view", "type": "function" }, { "constant": false, "inputs": [ { "name": "to", "type": "address" }, { "name": "name", "type": "string" }, { "name": "data", "type": "string" } ], "name": "replaceData", "outputs": [], "payable": false, "stateMutability": "nonpayable", "type": "function" }, { "constant": false, "inputs": [ { "name": "viewer", "type": "address" } ], "name": "approve", "outputs": [ { "name": "res", "type": "bool" } ], "payable": false, "stateMutability": "nonpayable", "type": "function" }, { "inputs": [], "payable": false, "stateMutability": "nonpayable", "type": "constructor" }, { "anonymous": false, "inputs": [ { "indexed": true, "name": "old", "type": "address" }, { "indexed": true, "name": "current", "type": "address" } ], "name": "OwnerChanged", "type": "event" } ]
+
+const address = "0x2dC0a2ce66f83e6B29Bd752E2d68222487737061";
+
+module.exports = {
+	ABI,
+	address,
+};
