@@ -30,11 +30,13 @@ app.get("/get", function (req, res) {
 	var outJson = {};
 	outJson["measurements"] = [];
 
-	for (var i in types) {
+	for (var piz in types) {
+		i = types[piz];
 		var ij = {};
 		ij["type"] = i;
 
 		var str = infoContract.getData(id, i);
+		console.log(i+":"+str);
 		if (str.length == 0) {
 			continue;
 		}
@@ -46,10 +48,10 @@ app.get("/get", function (req, res) {
 			vj.push({"time":json[j], "value": j});
 		}
 		ij["values"] = vj;
-		outJson.push(ij);
+		outJson["measurements"].push(ij);
 	}
 	
-	res.send("ok");
+	res.send(outJson);
 })
 
 app.listen(8000)
