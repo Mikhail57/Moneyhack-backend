@@ -1,4 +1,4 @@
-pragma solidity ^0.4.18;
+pragma solidity ^0.4.16;
 
 /**
  * The Owned contract ensures that only the creator (deployer) of a 
@@ -42,17 +42,16 @@ contract InfoContainer is BaseContract {
 		string[] values;
 	}
 
-	mapping (address => sensorDataEntity[]) values;
+	mapping (address => mapping (string => string)) values;
 
-	function getData(address from) constant returns(string[]) {
-		require(from == owner || allowance[owner][from] == true);
-		sensorDataEntity[] myMapping = values[from];
-		
+	function getData(address whom, string sensorName) constant returns(string) {
+		require((whom == owner) || (allowance[owner][whom]));
+		return values[whom][sensorName];
 	}
 
-	function addData(address to, string name, string data) only_owner {
-		sensorDataEntity[] vls = values[to];
-		uint len = vls.length;
+	function replaceData(address to, string name, string data) only_owner {
+		require(to == owner);
+		values[to][name] = data;
 	}
 
 
